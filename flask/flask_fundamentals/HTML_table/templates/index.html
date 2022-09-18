@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML tables</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <table>
+        <tr>
+        {% for keys in users_key %}
+        <th>{{keys}}</th>
+        {% endfor %}
+        <th>full_name</th>
+        </tr>
+        {% for val in user_info %}
+        <tr>
+            <td>{{val.first_name}}</td>
+            <td>{{val.last_name}}</td>
+            <td>{{val.first_name}} {{val.last_name}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

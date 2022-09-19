@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Info</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/showstyle.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Submitted Info</h1>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>{{name}}</td>
+            </tr>
+            <tr>
+                <td>Dojo Location:</td>
+                <td>{{location}}</td>
+            </tr>
+            <tr>
+                <td>Favorite Language:</td>
+                <td>{{language}}</td>
+            </tr>
+            <tr>
+                <td>Background:</td>
+                <td>{{background}}</td>
+            </tr>
+            <tr>
+                <td>Services you would like to receive:</td>
+                <td>{{career_service}}, {{challenges}}, {{newsletter}}</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Comment:</td>
+                <td>{{comment}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

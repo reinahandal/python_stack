@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey Index</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mainstyle.css') }}">
+</head>
+<body>
+    <form action='/result' method='POST'>
+        <div>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="location">Dojo Location:</label>
+            <select name="location" id="location" required>
+                <option value="San Jose">San Jose</option>
+                <option value="New York">New York</option>
+                <option value="San Francisco">San Francisco</option>
+            </select>
+        </div>
+        <div>
+            <label for="language">Favorite Language:</label>
+            <select name="language" id="language" required>
+                <option value="Python">Python</option>
+                <option value="C#">C#</option>
+                <option value="Ruby">Ruby</option>
+            </select>
+        </div>
+        <div>
+            <input type="radio" id="IT" name="background" value="IT" required>
+            <label for="IT">IT Background</label>
+            <input type="radio" id="non-IT" name="background" value="non-IT" required>
+            <label for="non-IT">Non-IT Background</label>
+        </div>
+        <div class="services">
+            <label>Services you would like to receive:</label>
+            <div>
+                <input type="checkbox" id="career-service" name="career-service" value="career service">
+                <label for="career-service">Career Service</label>
+            </div>
+            <div>
+                <input type="checkbox" id="newsletter" name="newsletter" value="alumni newsletter">
+                <label for="newsletter">Alumni Newsletter</label>
+            </div>
+            <div>
+                <input type="checkbox" id="code-challenges" name="challenges" value="monthly coding challenges">
+                <label for="code-challenges">Monthly Coding Challenges</label>
+            </div>
+        </div>
+        <div class="comment-section">
+            <label for="comment">Comment (optional):</label>
+            <textarea rows="5" cols="20" name="comment" id="comment"></textarea>
+        </div>
+        <input type="submit">
+    </form>
+</body>
+</html>

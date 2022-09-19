@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+form {
+    margin: 20px auto;
+    border: 2px black solid;
+    padding: 20px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+form div {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+label {
+    margin-right: 10px;
+}
+input[type=text], select {
+    width: 50%;
+}
+.services {
+    display: flex;
+    flex-direction: column;
+}
+.services div {
+    display: flex;
+    justify-content: flex-start;
+}
+input[type=checkbox], input[type=radio] {
+    margin-right: 10px;
+}
+
+.comment-section {
+    display: flex;
+    flex-direction: column;
+}
+input[type=submit] {
+    background-color: blue;
+    color: white;
+    box-shadow: 2px 2px black;
+    padding: 5px;
+    margin-top: 10px;
+    align-self: flex-end;
+}

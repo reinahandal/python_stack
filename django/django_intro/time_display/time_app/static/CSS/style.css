@@ -1,0 +1,17 @@
+* {
+    font-family: sans-serif;
+}
+.header {
+    border: 3px black solid;
+    padding: 10px 20px;
+    margin: 20px auto;
+}
+.timedisplay {
+    border: 3px black solid;
+    margin: 0 auto;
+    font-size: 3em;
+    padding: 0 100px;
+}
+p {
+    text-align: center;
+}

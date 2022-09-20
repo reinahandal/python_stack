@@ -8,7 +8,7 @@ def users():
         {'first_name' : 'Mark', 'last_name' : 'Guillen'},
         {'first_name' : 'KB', 'last_name' : 'Tonel'}
     ]
-    return render_template("index.html", user_info=users, users_key=users[0])
+    return render_template("index.html", user_info=users)
 
 if __name__ == "__main__":
     app.run(debug=True)

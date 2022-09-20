@@ -14,6 +14,10 @@
         <div class="grid-row">
             {% for y in range(cols)%}
             {% if y%2 == 0: %}
+            <!-- {
+                colorOne = color1
+                colorTwo = color2
+            } -->
             <div class="grid-item1" style="background-color: {{ color1 }}"></div>
             {% else: %}
             <div class="grid-item2" style="background-color: {{ color2 }}"></div>

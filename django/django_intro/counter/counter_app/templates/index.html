@@ -1,2 +1,64 @@
-<h1>Counter</h1>
-<h2>{{request.session.counter}} times</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        .container {
+    border: black solid 3px;
+    margin: 30px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    font-family: sans-serif;
+    }
+    form {
+        margin-top: 20px;
+    }
+    input[type=number] {
+        width: 50px;
+        border: 2px black solid;
+    }
+    button {
+        background-color: white;
+        color: black;
+        box-shadow: 2px 2px black;
+    }
+    #reset {
+        background-color: red;
+        color: white;
+        padding: 5px; 
+    }
+    #plus-two {
+        padding: 3px 10px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Counter</h1>
+        <h2>{{request.session.counter}} time(s)</h2>
+        <form action="destroy_session/" method="post">
+            {% csrf_token %}
+            <button type="submit" id="reset">Reset</button>
+        </form>
+        <form action="add_two/" method="post">
+            {% csrf_token %}
+            <button type="submit" id="plus-two">+2</button>
+        </form>
+        <form action="custom/" method="post">
+            {% csrf_token %}
+            <label for="custom_number">Increment by: </label>
+            <input type="number" name="custom_number" id="custom_number">
+            <button type="submit">+</button>
+        </form>
+    </div>
+
+</body>
+</html>

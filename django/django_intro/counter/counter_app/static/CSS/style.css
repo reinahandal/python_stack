@@ -1,0 +1,30 @@
+.container {
+    border: black solid 3px;
+    margin: 30px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    font-family: sans-serif;
+}
+form {
+        margin-top: 20px;
+}
+input[type=number] {
+        width: 50px;
+        border: 2px black solid;
+}
+button {
+        background-color: white;
+        color: black;
+        box-shadow: 2px 2px black;
+}
+#reset {
+        background-color: red;
+        color: white;
+        padding: 5px; 
+}
+#plus-two {
+        padding: 3px 10px;
+}

@@ -17,7 +17,7 @@
         <div class="activity-box">
             <h2>Farm</h2>
             <p>(earns 10-20 gold)</p>
-            <form action="/process_money" method="post">
+            <form action="/process_money/" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="activity" value="farm">
                 <button type="submit">Find Gold!</button>
@@ -26,7 +26,7 @@
         <div class="activity-box">
             <h2>Cave</h2>
             <p>(earns 10-20 gold)</p>
-            <form action="/process_money" method="post">
+            <form action="/process_money/" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="activity" value="cave">
                 <button type="submit">Find Gold!</button>
@@ -35,7 +35,7 @@
         <div class="activity-box">
             <h2>House</h2>
             <p>(earns 10-20 gold)</p>
-            <form action="/process_money" method="post">
+            <form action="/process_money/" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="activity" value="house">
                 <button type="submit">Find Gold!</button>
@@ -44,7 +44,7 @@
         <div class="activity-box">
             <h2>Quest</h2>
             <p>(earns/takes 0-50 gold)</p>
-            <form action="/process_money" method="post">
+            <form action="/process_money/" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="activity" value="quest">
                 <button type="submit">Find Gold!</button>

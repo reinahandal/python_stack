@@ -53,7 +53,9 @@
     </div>
     <h3>Activities:</h3>
     <div class="activities-log">
-
+        {% if "current_activity" in request.session %}
+        <p>You entered a {{request.session.current_activity}} and earned {{request.session.random_number}} gold.</p>
+        {% endif %}
     </div>
 </body>
 </html>

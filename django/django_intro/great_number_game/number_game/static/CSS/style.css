@@ -1,0 +1,32 @@
+body {
+    font-family: sans-serif;
+}
+.container {
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.wrong {
+    border: black 3px solid;
+    background-color: red;
+    color: white;
+    font-size: 2em;
+    padding: 40px;
+    text-align: center;
+    width: fit-content;
+    height: 150px;
+    margin-bottom: 20px;
+}
+.right {
+    border: black 3px solid;
+    background-color: lightgreen;
+    color: white;
+    font-size: 2em;
+    padding: 40px;
+    text-align: center;
+    width: fit-content;
+    height: 150px;
+    margin-bottom: 20px;
+}

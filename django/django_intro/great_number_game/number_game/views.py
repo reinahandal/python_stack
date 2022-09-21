@@ -4,12 +4,11 @@ def index(request):
     if "random_number" not in request.session:
         random_number = random.randint(1, 100)
         request.session['random_number'] = random_number
-    # print(random_number)
     return render(request,'index.html')
 def submit_guess(request):
+    counter = request.session.get('guess_counter', 1)
+    request.session['guess_counter'] = counter + 1
     random_guess = int(request.POST['random_guess'])
-    # print(random_guess)
-    print(request.session['random_number'])
     if random_guess > request.session['random_number']:
         request.session['user_guess'] = "too_high"
     elif random_guess < request.session['random_number']:
@@ -20,4 +19,10 @@ def submit_guess(request):
 def play_again(request):
     del request.session['random_number']
     del request.session['user_guess']
+    del request.session['guess_counter']
+    return redirect('/')
+def loser(request):
+    del request.session['random_number']
+    del request.session['user_guess']
+    del request.session['guess_counter']
     return redirect('/')

@@ -27,6 +27,23 @@ body {
     padding: 40px;
     text-align: center;
     width: fit-content;
-    height: 150px;
     margin-bottom: 20px;
+}
+/* .loser {
+    border: black 3px solid;
+    background-color: blue;
+    color: white;
+    font-size: 2em;
+    padding: 40px;
+    text-align: center;
+    width: fit-content;
+    margin-bottom: 20px;
+} */
+button {
+    color: black;
+    background-color: white;
+    box-shadow: 2px 2px black;
+}
+.num-of-tries {
+    font-size: 0.6em;
 }

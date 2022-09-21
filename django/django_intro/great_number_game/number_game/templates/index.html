@@ -20,11 +20,12 @@
         {% elif request.session.user_guess == "correct" %}
         <div class="right">
             <p>You're right!</p>
+            <p class="num-of-tries">It only took you {{request.session.guess_counter}} tries</p>
             <form action="/play_again/" method="post">
                 {% csrf_token %}           
                 <button type="submit">Play Again!</button>
             </form>
-        </div>    
+        </div>
         {% endif %}
         <form action="submit_guess/" method="post">
             {% csrf_token %}

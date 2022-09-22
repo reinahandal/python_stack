@@ -47,3 +47,7 @@ button {
 .num-of-tries {
     font-size: 0.6em;
 }
+#random-guess {
+    border: 2px black solid;
+    width: 40px;
+}

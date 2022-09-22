@@ -29,7 +29,7 @@
         {% endif %}
         <form action="submit_guess/" method="post">
             {% csrf_token %}
-            <input type="number" name="random_guess">
+            <input type="number" name="random_guess" id="random-guess">
             <button type="submit">Submit</button>
         </form>
     </div>

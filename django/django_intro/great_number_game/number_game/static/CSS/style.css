@@ -29,7 +29,7 @@ body {
     width: fit-content;
     margin-bottom: 20px;
 }
-.loser {
+/* .loser {
     border: black 3px solid;
     background-color: blue;
     color: white;
@@ -38,7 +38,7 @@ body {
     text-align: center;
     width: fit-content;
     margin-bottom: 20px;
-}
+} */
 button {
     color: black;
     background-color: white;

@@ -21,7 +21,7 @@ def play_again(request):
     del request.session['user_guess']
     del request.session['guess_counter']
     return redirect('/')
-def loser(request):
+def you_lose(request):
     del request.session['random_number']
     del request.session['user_guess']
     del request.session['guess_counter']

@@ -13,22 +13,30 @@
         <h2>Welcome to the Great Number Game!</h2>
         <p>I am thinking of a number between 1 and 100</p>
         <p>Take a guess!</p>
-        {% if request.session.user_guess == "too_high" %}
+        {% if request.session.user_guess == "too_high" and request.session.guess_counter <= 5 %}
         <div class="wrong">Too high!</div>
-        {% elif request.session.user_guess == "too_low" %}
+        {% elif request.session.user_guess == "too_low" and request.session.guess_counter <= 5 %}
         <div class="wrong">Too low!</div>   
-        {% elif request.session.user_guess == "correct" %}
+        {% elif request.session.user_guess == "correct" and request.session.guess_counter <= 5 %}
         <div class="right">
             <p>You're right!</p>
             <p class="num-of-tries">It only took you {{request.session.guess_counter}} tries</p>
             <form action="/play_again/" method="post">
-                {% csrf_token %}           
+            {% csrf_token %}           
+                <button type="submit">Play Again!</button>
+            </form>
+        </div>
+        {% else %}
+        <div class="loser">
+            <p>You lose!</p>
+            <form action="you_lose/" method="post">
+            {% csrf_token %}           
                 <button type="submit">Play Again!</button>
             </form>
         </div>
         {% endif %}
         <form action="submit_guess/" method="post">
-            {% csrf_token %}
+        {% csrf_token %}
             <input type="number" name="random_guess" id="random-guess">
             <button type="submit">Submit</button>
         </form>

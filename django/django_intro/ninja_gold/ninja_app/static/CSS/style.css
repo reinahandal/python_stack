@@ -42,3 +42,9 @@ h3 {
     margin-bottom: 20px;
     padding: 10px;
 }
+.activity-success {
+    color: green;
+}
+.activity-lose {
+    color: red;
+}

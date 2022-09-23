@@ -1,0 +1,17 @@
+main {
+    padding: 20px;
+}
+h1, h2 {
+    text-align: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.top-row, .bottom-row {
+    display: flex;
+}
+.mb-3 {
+    margin: 20px;
+}

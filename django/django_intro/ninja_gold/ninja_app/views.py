@@ -23,6 +23,7 @@ def money(request):
             request.session['activity_log'].insert(0, ['You failed a quest and lost ' + str(random_number) + ' gold. Ouch. (' + time + ')', 'lose'])
         else:
             request.session['activity_log'].insert(0, ['You entered a quest and earned ' + str(random_number) + ' gold. (' + time + ')', 'success'])
+    print(random_number)
     request.session['gold_counter'] += random_number
     return redirect('/gold/')
 

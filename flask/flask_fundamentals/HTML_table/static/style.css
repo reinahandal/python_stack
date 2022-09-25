@@ -1,10 +1,4 @@
-table {
-    border: 3px black solid;
-    font-family: sans-serif;
-    border-collapse: collapse;
-    margin: 30px auto;
-}
-th, td {
-    padding: 10px;
-    border: 2px black solid;
+.table {
+    margin: 0 auto;
+    width: 60%;
 }

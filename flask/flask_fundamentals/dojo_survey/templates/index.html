@@ -6,55 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dojo Survey Index</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mainstyle.css') }}">
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    </head>
 <body>
-    <form action='/result' method='POST'>
-        <div>
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div>
-            <label for="location">Dojo Location:</label>
-            <select name="location" id="location" required>
-                <option value="San Jose">San Jose</option>
-                <option value="New York">New York</option>
-                <option value="San Francisco">San Francisco</option>
-            </select>
-        </div>
-        <div>
-            <label for="language">Favorite Language:</label>
-            <select name="language" id="language" required>
-                <option value="Python">Python</option>
-                <option value="C#">C#</option>
-                <option value="Ruby">Ruby</option>
-            </select>
-        </div>
-        <div>
-            <input type="radio" id="IT" name="background" value="IT" required>
-            <label for="IT">IT Background</label>
-            <input type="radio" id="non-IT" name="background" value="non-IT" required>
-            <label for="non-IT">Non-IT Background</label>
-        </div>
-        <div class="services">
-            <label>Services you would like to receive:</label>
-            <div>
-                <input type="checkbox" id="career-service" name="career-service" value="career service">
-                <label for="career-service">Career Service</label>
+    <div class="container">
+        <form action='/result' method='POST'>
+            <div class="mb-3">
+                <label for="name" class="form-label">Your Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
             </div>
-            <div>
-                <input type="checkbox" id="newsletter" name="newsletter" value="alumni newsletter">
-                <label for="newsletter">Alumni Newsletter</label>
+            <div class="mb-3">
+                <label for="location" class="form-label">Dojo Location:</label>
+                <select class="form-select"  name="location" id="location" required>
+                    <option value="San Jose">San Jose</option>
+                    <option value="New York">New York</option>
+                    <option value="San Francisco">San Francisco</option>
+                </select>
             </div>
-            <div>
-                <input type="checkbox" id="code-challenges" name="challenges" value="monthly coding challenges">
-                <label for="code-challenges">Monthly Coding Challenges</label>
+            <div class="mb-3">
+                <label for="language" class="form-label">Favorite Language:</label>
+                <select class="form-select" name="language" id="language" required>
+                    <option value="Python">Python</option>
+                    <option value="C#">C#</option>
+                    <option value="Ruby">Ruby</option>
+                </select>
             </div>
-        </div>
-        <div class="comment-section">
-            <label for="comment">Comment (optional):</label>
-            <textarea rows="5" cols="20" name="comment" id="comment"></textarea>
-        </div>
-        <input type="submit">
-    </form>
+            <div class="mb-3">
+                <input type="radio" class="form-check-input" id="IT" name="background" value="IT" required>
+                <label for="IT" class="form-label">IT Background</label>
+                <input type="radio" class="form-check-input" id="non-IT" name="background" value="non-IT" required>
+                <label for="non-IT" class="form-label">Non-IT Background</label>
+            </div>
+            <div class=" mb-3 services">
+                <label class="form-label">Services you would like to receive:</label>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="career-service" name="career-service" value="career service">
+                    <label for="career-service" class="form-label">Career Service</label>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter" value="alumni newsletter">
+                    <label for="newsletter" class="form-label">Alumni Newsletter</label>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="code-challenges" name="challenges" value="monthly coding challenges">
+                    <label for="code-challenges" class="form-label">Monthly Coding Challenges</label>
+                </div>
+            </div>
+            <div class="mb-3 comment-section">
+                <label for="comment" class="form-label">Comment (optional):</label>
+                <textarea rows="5" cols="20" name="comment" id="comment" class="form-control"></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
 </body>
 </html>

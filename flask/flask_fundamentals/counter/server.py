@@ -4,14 +4,23 @@ app.secret_key = 'secret'
 
 @app.route('/')
 def counter():
-    session['counter'] = 
-@app.route('/users')
-def create_user():
-    print("Got Post Info")
-    # Here we add two properties to session to store the name and email
-    session['username'] = request.form['name']
-    session['useremail'] = request.form['email']
-    return redirect('/show')
+    counter = session.get('counter', 0)
+    session['counter'] = counter + 1
+    return render_template('index.html', counter = session['counter'])
+
+
+@app.route('/destroy_session', methods=['POST'])
+def destroy():
+    session.clear()
+    return redirect ("/")
+
+
+@app.route('/plustwo', methods=['POST'])
+def plustwo():
+    counter2 = session.get('counter', 0)
+    session['counter'] = counter2 + 1
+    return redirect ("/")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

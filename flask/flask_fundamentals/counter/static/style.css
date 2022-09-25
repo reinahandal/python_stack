@@ -1,0 +1,13 @@
+.container {
+    width: fit-content;
+    text-align: center;
+    margin: 30% auto;
+    font-family: sans-serif;
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+.btn {
+    margin: 10px;
+}

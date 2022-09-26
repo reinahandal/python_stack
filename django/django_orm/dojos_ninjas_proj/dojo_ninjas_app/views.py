@@ -23,3 +23,7 @@ def new_ninja(request):
     Ninja.objects.create(first_name=first_name, last_name=last_name, dojo=dojo)
     return redirect('/')
 
+def delete_dojo(request):
+    dojo_to_delete = Dojo.objects.get(id=request.POST['dojo_to_delete'])
+    dojo_to_delete.delete()
+    return redirect('/')

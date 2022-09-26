@@ -13,3 +13,11 @@
     margin: 0 auto;
     padding-top: 20px;
 }
+.dojo-names {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dojo-name {
+    margin-right: 20px;
+}

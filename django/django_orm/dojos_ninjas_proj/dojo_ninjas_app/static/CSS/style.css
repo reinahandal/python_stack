@@ -1,0 +1,15 @@
+.forms {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 3px black solid;
+    padding: 20px;
+}
+.container {
+    width: fit-content;
+    padding: 10px;
+}
+.display-dojos {
+    width: fit-content;
+    margin: 0 auto;
+    padding-top: 20px;
+}

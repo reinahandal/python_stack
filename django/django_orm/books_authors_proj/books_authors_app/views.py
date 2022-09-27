@@ -32,3 +32,33 @@ def author_to_book(request):
     return redirect('/books/'+target_book_id)
 
 
+def add_author(request):
+    context = {
+        "all_books": Book.objects.all(),
+        "all_authors": Author.objects.all(),
+    }
+    return render(request, 'add_author.html', context)
+
+
+def add_this_author(request):
+    first_name=request.POST['first_name']
+    last_name=request.POST['last_name']
+    notes=request.POST['notes']
+    Author.objects.create(first_name=first_name, last_name=last_name,notes=notes)
+    return redirect('/authors')
+
+
+def show_this_author(request, author_id):
+    context = {
+        "this_author": Author.objects.get(id=author_id),
+        "all_books": Book.objects.all(),
+    }
+    return render(request, 'show_author.html', context)
+
+
+def book_to_author(request):
+    book_to_add = Book.objects.get(id=request.POST['book_to_author'])
+    target_author_id = request.POST['which_author']
+    target_author = Author.objects.get(id=target_author_id)
+    target_author.books.add(book_to_add)
+    return redirect('/authors/'+target_author_id)

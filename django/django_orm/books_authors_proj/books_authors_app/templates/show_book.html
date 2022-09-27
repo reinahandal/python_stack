@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books and Authors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/show_style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{this_book.title}}</h4>
+                <h5 class="card-subtitle text-muted mb-2">ID: {{this_book.id}}</h5>
+                <p class="card-text">Description: {{this_book.desc}}</p>
+                <h5 class="card-subtitle">Authors:</h5>
+                <ul>
+                    {% for author in this_book.authors.all %}
+                    <li>{{author.first_name}} {{ author.last_name}}</li>
+                    {% endfor %}
+                </ul>
+                <form action="/author_to_book/" method="post">
+                    <input type="hidden" name="which_book" value="{{this_book.id}}">
+                    {% csrf_token %}
+                    <select name="author_to_book" id="author_to_book">
+                        <option value="" disabled selected>-select an author-</option>
+                        {% for author in all_authors %}
+                        <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Add">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

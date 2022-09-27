@@ -22,16 +22,16 @@
                     <li>{{book.title}}</li>
                     {% endfor %}
                 </ul>
-                <form action="/book_to_author/" method="post">
+                <form action="/book_to_author/" method="post" class="add-form">
                     <input type="hidden" name="which_author" value="{{this_author.id}}">
                     {% csrf_token %}
-                    <select name="book_to_author" id="book_to_author">
+                    <select name="book_to_author" id="book_to_author" class="form-control">
                         <option value="" disabled selected>-select a book-</option>
                         {% for book in all_books %}
                         <option value="{{book.id}}">{{book.title}}</option>
                         {% endfor %}
                     </select>
-                    <input type="submit" value="Add">
+                    <input type="submit" value="Add" class="btn btn-primary">
                 </form>
             </div>
         </div>

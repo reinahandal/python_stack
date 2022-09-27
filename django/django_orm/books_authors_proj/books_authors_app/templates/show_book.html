@@ -22,18 +22,19 @@
                     <li>{{author.first_name}} {{ author.last_name}}</li>
                     {% endfor %}
                 </ul>
-                <form action="/author_to_book/" method="post">
-                    <input type="hidden" name="which_book" value="{{this_book.id}}">
-                    {% csrf_token %}
-                    <select name="author_to_book" id="author_to_book">
-                        <option value="" disabled selected>-select an author-</option>
-                        {% for author in all_authors %}
-                        <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
-                        {% endfor %}
-                    </select>
-                    <input type="submit" value="Add">
-                </form>
-
+                <div class="mb-3">
+                    <form action="/author_to_book/" method="post" class="add-form">
+                        <input type="hidden" name="which_book" value="{{this_book.id}}">
+                        {% csrf_token %}
+                        <select name="author_to_book" id="author_to_book" class="form-control">
+                            <option value="" disabled selected>-select an author-</option>
+                            {% for author in all_authors %}
+                            <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" value="Add" class="btn btn-primary">
+                    </form>
+                </div>
             </div>
         </div>
     </div>

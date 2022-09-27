@@ -1,0 +1,13 @@
+.container {
+    margin-top: 20px;
+}
+.btn {
+    margin-left: 10px;
+}
+.form-control {
+    width: fit-content;
+}
+.add-form {
+    display: flex;
+    align-items: center;
+}

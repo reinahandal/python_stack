@@ -17,9 +17,11 @@ def add_this_book(request):
 
 
 def show_this_book(request, book_id):
+    this_book = Book.objects.get(id=book_id)
     context = {
-        "this_book": Book.objects.get(id=book_id),
-        "all_authors": Author.objects.all(),
+        "this_book": this_book,
+        # "all_authors": Author.objects.all(),
+        'authors_to_include': Author.objects.exclude(id__in=this_book.authors.all()),
     }
     return render(request, 'show_book.html', context)
 
@@ -49,9 +51,10 @@ def add_this_author(request):
 
 
 def show_this_author(request, author_id):
+    this_author = Author.objects.get(id=author_id)
     context = {
-        "this_author": Author.objects.get(id=author_id),
-        "all_books": Book.objects.all(),
+        "this_author": this_author,
+        "books_to_include": Book.objects.exclude(id__in=this_author.books.all()),
     }
     return render(request, 'show_author.html', context)
 

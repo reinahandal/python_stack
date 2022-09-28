@@ -10,28 +10,30 @@
     <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
 </head>
 <body>
-    <a href="/shows/">Go Back</a>
-    <form action="/shows/{{tv_show.id}}/update/" method="post">
-        <h1>Edit Show {{tv_show.id}}</h1>
-        {% csrf_token %}
-        <div>
-            <label for="title">Title</label>
-            <input type="text" name="title" value="{{tv_show.title}}">
-        </div>
-        <div>
-            <label for="network">Network</label>
-            <input type="text" name="network" value="{{tv_show.network}}">
-        </div>
-        <div>
-            <label for="release_date">Release Date</label>
-            <input type="date" name="release_date" value="{{tv_show.release_date}}">
-        </div>
-        <div>
-            <label for="desc">Description</label>
-            <textarea name="desc" id="desc" cols="30" rows="10">{{tv_show.desc}}</textarea>
-        </div>
-        <input type="submit" value="Update">
-    </form>
-    <a href="/shows/{{tv_show.id}}">Go to Show</a>
+    <div class="container">
+        <a href="/shows/" class="go-back position-absolute top-0 end-0">Go Back</a>
+        <form action="/shows/{{tv_show.id}}/update/" method="post">
+            <h1>Edit Show {{tv_show.id}}</h1>
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" value="{{tv_show.title}}">
+            </div>
+            <div class="mb-3">
+                <label for="network" class="form-label">Network</label>
+                <input type="text" class="form-control" name="network" value="{{tv_show.network}}">
+            </div>
+            <div class="mb-3">
+                <label for="release_date" class="form-label">Release Date</label>
+                <input type="date" class="form-control" name="release_date" value="{{tv_show.release_date}}">
+            </div>
+            <div class="mb-3">
+                <label for="desc" class="form-label">Description</label>
+                <textarea name="desc" class="form-control" id="desc" cols="30" rows="10">{{tv_show.desc}}</textarea>
+            </div>
+            <input type="submit" value="Update" class="btn btn-dark">
+        </form>
+        <a href="/shows/{{tv_show.id}}">Go to Show</a>
+    </div>
 </body>
 </html>

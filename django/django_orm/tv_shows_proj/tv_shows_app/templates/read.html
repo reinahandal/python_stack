@@ -11,14 +11,12 @@
 </head>
 <body>
     <div class="card">
-        <a href="/shows">Go Back</a>
-        <h1>TV Show {{tv_show.id}}</h1>
+        <a href="/shows" class="go-back position-absolute top-0 end-0">Go Back</a>
+        <h1 class="card-title">TV Show {{tv_show.id}}</h1>
         <p>Title: {{tv_show.title}}</p>
         <p>Network: {{tv_show.network}}</p>
         <p>Release Date: {{tv_show.release_date}}</p>
-        <p>Description: {{tv_show.desc}}</p>
-    </div>
-    <div>
+        <p class="card-text">Description: {{tv_show.desc}}</p>
         <p>Last Updated: {{tv_show.updated_at}}</p>
         <p><a href="/shows/{{tv_show.id}}/edit">Edit</a> | <a href="/shows/{{tv_show.id}}/destroy">Delete</a></p>
     </div>

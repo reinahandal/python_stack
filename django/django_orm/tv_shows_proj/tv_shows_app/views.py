@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Show
 
+
+def root(request):
+    return redirect('/shows')
+
+
 def index(request):
     context = {
         "all_shows": Show.objects.all()

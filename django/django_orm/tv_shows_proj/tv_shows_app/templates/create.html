@@ -10,27 +10,29 @@
     <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
 </head>
 <body>
-    <h1>Add a New Show</h1>
-    <a href="/shows">Go Back</a>
-    <form action="/shows/create/" method="post">
-        {% csrf_token %}
-        <div>
-            <label for="title">Title</label>
-            <input type="text" name="title">
-        </div>
-        <div>
-            <label for="network">Network</label>
-            <input type="text" name="network">
-        </div>
-        <div>
-            <label for="release_date">Release Date</label>
-            <input type="date" name="release_date">
-        </div>
-        <div>
-            <label for="desc">Description</label>
-            <textarea name="desc" id="desc" cols="30" rows="10"></textarea>
-        </div>
-        <input type="submit" value="Create">
-    </form>
+    <div class="container">
+        <a href="/shows" class="go-back position-absolute top-0 end-0">Go Back</a>
+        <h1>Add a New Show</h1>
+        <form action="/shows/create/" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="network" class="form-label">Network</label>
+                <input type="text" name="network" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="release_date" class="form-label">Release Date</label>
+                <input type="date" name="release_date" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="desc" class="form-label">Description</label>
+                <textarea name="desc" id="desc" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+            <input type="submit" value="Create" class="btn btn-dark">
+        </form>
+    </div>
 </body>
 </html>

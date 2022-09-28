@@ -31,7 +31,6 @@ def create_show(request):
         desc=request.POST['desc']
         new_show = Show.objects.create(title=title, network=network, release_date=release_date, desc=desc)
         show_id = new_show.id
-        messages.success(request, "Show successfully added!")
 
         return redirect('/shows/'+str(show_id)+'/')
 
@@ -53,17 +52,24 @@ def edit_show(request, show_id):
 
 
 def update_show(request, show_id):
-    new_title=request.POST['title']
-    new_network=request.POST['network']
-    new_date=request.POST['release_date']
-    new_desc=request.POST['desc']
-    show_to_update = Show.objects.get(id=show_id)
-    show_to_update.title = new_title
-    show_to_update.network = new_network
-    show_to_update.release_date = new_date
-    show_to_update.desc = new_desc
-    show_to_update.save()
-    return redirect('/shows/'+show_id)
+    errors = Show.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/shows/'+show_id+'/edit')
+    else:
+        new_title=request.POST['title']
+        new_network=request.POST['network']
+        new_date=request.POST['release_date']
+        new_desc=request.POST['desc']
+        show_to_update = Show.objects.get(id=show_id)
+        show_to_update.title = new_title
+        show_to_update.network = new_network
+        show_to_update.release_date = new_date
+        show_to_update.desc = new_desc
+        show_to_update.save()
+
+        return redirect('/shows/'+show_id)
 
 def delete_show(request, show_id):
     show_to_delete = Show.objects.get(id=show_id)

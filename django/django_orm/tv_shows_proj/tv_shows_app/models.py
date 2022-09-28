@@ -1,6 +1,6 @@
 from django.db import models
-
-
+from time import gmtime, strftime, localtime
+from datetime import datetime
 class ShowManager(models.Manager):
     def basic_validator(self,postData):
         errors = {}
@@ -8,10 +8,12 @@ class ShowManager(models.Manager):
             errors["title"] = "Title should be at least 2 characters"
         if len(postData['network']) < 3:
             errors["network"] = "Network name should be at least 3 characters"
+        if not postData['release_date']:
+            errors["release_date"] = "Release Date is required"
         if len(postData['desc']) < 10:
             errors["desc"] = "Description should be at least 10 characters"
-        if not len(postData['release_date']):
-            errors["release_date"] = "Release Date is required"
+        if datetime.strptime(postData['release_date'],'%Y-%m-%d') > datetime.today():
+            errors["release_date"] = "Release date should be in the past"
         return errors
 
 

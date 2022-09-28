@@ -10,8 +10,9 @@ class ShowManager(models.Manager):
             errors["network"] = "Network name should be at least 3 characters"
         if not postData['release_date']:
             errors["release_date"] = "Release Date is required"
-        if len(postData['desc']) < 10:
-            errors["desc"] = "Description should be at least 10 characters"
+        if postData['desc']:
+            if len(postData['desc']) < 10:
+                errors["desc"] = "Description should be at least 10 characters"
         if datetime.strptime(postData['release_date'],'%Y-%m-%d') > datetime.today():
             errors["release_date"] = "Release date should be in the past"
         return errors

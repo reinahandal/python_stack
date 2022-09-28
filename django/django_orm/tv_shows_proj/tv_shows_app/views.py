@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Show
+from time import strftime
 
 
 def root(request):
@@ -37,6 +38,7 @@ def read_show(request, show_id):
 def edit_show(request, show_id):
     context = {
         "tv_show": Show.objects.get(id=show_id),
+        "tv_show_release_date": Show.objects.get(id=show_id).release_date.strftime('%Y-%m-%d')
     }
     return render(request, 'update.html', context)
 
@@ -49,12 +51,10 @@ def update_show(request, show_id):
     show_to_update = Show.objects.get(id=show_id)
     show_to_update.title = new_title
     show_to_update.network = new_network
-    show_to_update.date = new_date
+    show_to_update.release_date = new_date
     show_to_update.desc = new_desc
     show_to_update.save()
     return redirect('/shows/'+show_id)
-# updated_at datetime, can we update it ???
-
 
 def delete_show(request, show_id):
     show_to_delete = Show.objects.get(id=show_id)

@@ -13,6 +13,13 @@
     <div class="container">
         <a href="/shows" class="go-back position-absolute top-0 end-0">Go Back</a>
         <h1>Add a New Show</h1>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
         <form action="/shows/create/" method="post">
             {% csrf_token %}
             <div class="mb-3">

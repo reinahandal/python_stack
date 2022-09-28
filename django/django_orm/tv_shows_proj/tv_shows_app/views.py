@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Show
 from time import strftime
+from django.contrib import messages
 
 
 def root(request):
@@ -18,14 +19,22 @@ def add_show(request):
 
 
 def create_show(request):
-    title=request.POST['title']
-    network=request.POST['network']
-    release_date=request.POST['release_date']
-    desc=request.POST['desc']
-    new_show = Show.objects.create(title=title, network=network, release_date=release_date, desc=desc)
-    show_id = new_show.id
-    return redirect('/shows/'+str(show_id)+'/')
-    # must redirect to /shows/<id>
+    errors = Show.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/shows/new')
+    else:
+        title=request.POST['title']
+        network=request.POST['network']
+        release_date=request.POST['release_date']
+        desc=request.POST['desc']
+        new_show = Show.objects.create(title=title, network=network, release_date=release_date, desc=desc)
+        show_id = new_show.id
+        messages.success(request, "Show successfully added!")
+
+        return redirect('/shows/'+str(show_id)+'/')
+
 
 
 def read_show(request, show_id):

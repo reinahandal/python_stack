@@ -12,6 +12,7 @@
 <body>
     <div class="container">
         <a href="/shows/" class="go-back position-absolute top-0 end-0">Go Back</a>
+        <h1>Edit Show {{tv_show.id}}</h1>
         {% if messages %}
         <ul class="messages">    
             {% for message in messages %}    
@@ -20,7 +21,6 @@
         </ul>
         {% endif %}
         <form action="/shows/{{tv_show.id}}/update/" method="post">
-            <h1>Edit Show {{tv_show.id}}</h1>
             {% csrf_token %}
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>

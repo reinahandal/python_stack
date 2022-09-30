@@ -19,11 +19,15 @@ def add_show(request):
 
 
 def create_show(request):
+    title_error = Show.objects.title_validator(request.POST)
     errors = Show.objects.basic_validator(request.POST)
-    if len(errors) > 0:
+    if len(errors) > 0 or len(title_error) > 0:
+        for key, value in title_error.items():
+            messages.error(request, value)
         for key, value in errors.items():
             messages.error(request, value)
         return redirect('/shows/new')
+        
     else:
         title=request.POST['title']
         network=request.POST['network']

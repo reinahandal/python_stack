@@ -17,6 +17,13 @@ class ShowManager(models.Manager):
             errors["release_date"] = "Release date should be in the past"
         return errors
 
+# validator that makes sure the title doesnt already exist in our DB, only for CREATE method 
+    def title_validator(self,postData):
+        title_errors = {}
+        if Show.objects.filter(title=postData['title']):
+            title_errors["title_exists"] = "This title already exists"
+        return title_errors
+
 
 class Show(models.Model):
     title = models.CharField(max_length=255)

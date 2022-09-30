@@ -3,3 +3,11 @@ main {
     padding: 3%;
     justify-content: space-evenly;
 }
+
+.logout {
+    text-align: end;
+
+}
+.success {
+    margin: 20px;
+}

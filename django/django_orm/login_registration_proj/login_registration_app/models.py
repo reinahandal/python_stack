@@ -8,11 +8,12 @@ class UserManager(models.Manager):
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
         if len(postData['fname']) < 2 or not postData['fname'].isalpha():
-            errors["fname"] = "First name should contain letters only and be at least 2 characters"
+            errors["fname"] = "First name should contain letters only and be at least 2 characters" 
 
         if len(postData['lname']) < 2 or not postData['lname'].isalpha():
             errors["lname"] = "Last name should contain letters only and be at least 2 characters"
-
+        # should i separate the alphabetical validation and the length validation ? how ?
+        
         if not postData['email']:
             errors["email"] = "Email is required"
         elif not EMAIL_REGEX.match(postData['email']): 

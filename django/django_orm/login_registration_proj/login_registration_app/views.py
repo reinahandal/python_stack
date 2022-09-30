@@ -18,23 +18,23 @@ def registration(request):
         email = request.POST['email']
         birthday = request.POST['birthday']
         password = request.POST['pw']
-        pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+        pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode() # hashes the entered password
         User.objects.create(first_name=first_name, last_name=last_name, email=email, birthday=birthday, password=pw_hash)
-        request.session['logged_user'] = first_name
+        request.session['logged_user'] = first_name # creates session
         return redirect('/success')
 
 
 def login(request):
-    user = User.objects.filter(email=request.POST['login_email'])
+    user = User.objects.filter(email=request.POST['login_email']) # checks if user email exists in DB, returns arr
     if user:
-        logged_user = user[0]
-        if bcrypt.checkpw(request.POST['login_pw'].encode(), logged_user.password.encode()):
-            request.session['logged_user'] = logged_user.first_name
+        logged_user = user[0] # considering we have unique emails due to validation
+        if bcrypt.checkpw(request.POST['login_pw'].encode(), logged_user.password.encode()): # checks that login pw matches one in DB after hashing
+            request.session['logged_user'] = logged_user.first_name #creates session
             return redirect('/success')
-    return redirect('/')
+    return redirect('/') # if user doesnt exist, redirect to root route
 
 def success(request):
-    if 'logged_user' in request.session:
+    if 'logged_user' in request.session: # doesnt allow user that isnt logged in to access this page 
         return render(request, 'success.html')
     else:
         return redirect('/')

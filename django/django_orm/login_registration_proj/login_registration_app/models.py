@@ -19,7 +19,7 @@ class UserManager(models.Manager):
         elif not EMAIL_REGEX.match(postData['email']): 
             errors['email'] = "Invalid email address"
         elif User.objects.filter(email=postData['email']):
-            errors['email'] = "E-mail already exists"
+            errors['email'] = "Email already exists"
 
         if not postData['birthday']:
             errors['birthday'] = "Date of birth is required"
@@ -27,7 +27,7 @@ class UserManager(models.Manager):
                 errors["birthday"] = "Date of birth should be in the past"
 
         if len(postData['pw']) < 8:
-            errors["password"] = "password should be at least 8 characters"
+            errors["password"] = "Password should be at least 8 characters"
         if not postData['confirm_pw']:
             errors["confirm_password"] = "Please confirm password"
         elif postData['pw'] != postData['confirm_pw']:

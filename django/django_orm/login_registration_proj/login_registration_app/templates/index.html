@@ -13,13 +13,6 @@
     <main class="container">
         <div class="container">
             <h1 class="text-center">Registration</h1>
-            {% if messages %}
-            <ul class="messages">    
-                {% for message in messages %}    
-                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
-                {% endfor %}
-            </ul>
-            {% endif %}
             <form action="/register/" method="POST">
                 {% csrf_token %}
                 <!-- <input type="hidden" name="which_form" value="registration"> -->
@@ -47,6 +40,15 @@
                     <label for="confirm_pw" class="form-label">Confirm Password</label>
                     <input type="password" name="confirm_pw" id="confirm_pw" class="form-control">             
                 </div>
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <ul class="messages">    
+                        {% for message in messages %}    
+                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
                 <input type="submit" value="Register" class="btn btn-primary">
             </form>
         </div>

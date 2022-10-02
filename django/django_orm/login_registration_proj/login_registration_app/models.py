@@ -22,10 +22,10 @@ class UserManager(models.Manager):
         
         if not postData['email']:
             errors["email"] = "Email is required"
-        elif not EMAIL_REGEX.match(postData['email']): 
-            errors['email'] = "Invalid email address"
         elif User.objects.filter(email=postData['email']):
             errors['email'] = "Email already exists"
+        elif not EMAIL_REGEX.match(postData['email']): 
+            errors['email'] = "Invalid email address"
 
         if not postData['birthday']:
             errors['birthday'] = "Date of birth is required"

@@ -13,7 +13,7 @@
     <header>
         <h1>CodingDojo Wall</h1>
         <div class="welcome-bar">
-            <h6>Welcome, {{request.session.user_first_name}}</h6>
+            <h6>Welcome, {{first_name}}</h6>
             <a href="/logout">Log Off</a>
         </div>
     </header>
@@ -33,7 +33,7 @@
             <div class="card-header">{{message.user.first_name}} {{message.user.last_name}} - {{ message.created_at }}</div>
             <div class="message-content">
                 <p class="card-body color-primary font-weight-bold">{{message.message}}</p>
-                {% if request.session.user_first_name == message.user.first_name %}
+                {% if request.session.logged_user == message.user.id %}
                 <form action="delete_message/" method="post">
                     {% csrf_token %}
                         <input type="hidden" name="delete_msg" value="{{message.id}}">

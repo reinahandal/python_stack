@@ -15,16 +15,24 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
+def display_on_wall(request):
+    context = {
+        "messages": Message.objects.all().order_by("-created_at"),
+        "first_name": User.objects.get(id=request.session['logged_user']).first_name,
+    }
+    return context
+
+
 def post_message(request):
     message = request.POST['message']
-    user = User.objects.get(first_name=request.session['user_first_name'])
+    user = User.objects.get(id=request.session['logged_user'])
     Message.objects.create(message=message, user=user)
 
 
 def add_comment(request):
     comment = request.POST['comment']
     message = Message.objects.get(id=request.POST['which_message'])
-    user = User.objects.get(first_name=request.session['user_first_name'])
+    user = User.objects.get(id=request.session['logged_user'])
     Comment.objects.create(comment=comment,message=message, user=user)
 
 def delete_message(request):

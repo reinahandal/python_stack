@@ -55,8 +55,8 @@ def registration(request):
     password = request.POST['password']
     pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
     User.objects.create(first_name=first_name, last_name=last_name, email=email, birthday=birthday, password=pw_hash)
-    logged_user = User.objects.get(first_name=first_name)
-    request.session['user_first_name'] = logged_user.first_name
+    logged_user = User.objects.get(email=email)
+    request.session['logged_user'] = logged_user.id
 
 # this method checks if password entered at login matches the hashed password in DB
 def is_authenticated(request, logged_user):

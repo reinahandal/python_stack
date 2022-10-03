@@ -1,13 +1,10 @@
 from django.shortcuts import render, redirect
 from . import models
 from .models import Message
-from django.contrib import messages
 
 def display_wall(request):
-    if 'user_first_name' in request.session:
-        context = {
-            "messages": Message.objects.all().order_by("-created_at")
-        }
+    if 'logged_user' in request.session:
+        context = models.display_on_wall(request)
         return render(request, 'wall.html', context)
     else:
         return redirect('/')

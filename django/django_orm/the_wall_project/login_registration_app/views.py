@@ -25,10 +25,10 @@ def login(request):
         return redirect('/')
     else:
         if models.is_authenticated(request, logged_user):
-            request.session['user_first_name'] = logged_user.first_name
+            request.session['logged_user'] = logged_user.id
             return redirect('/wall')
 
 
 def logout(request):
-    del request.session['user_first_name']
+    del request.session['logged_user']
     return redirect('/')

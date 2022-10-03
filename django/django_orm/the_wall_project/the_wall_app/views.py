@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from . import models
 from .models import Message
 
+# This method renders the wall page for logged in/registered users
 def display_wall(request):
     if 'logged_user' in request.session:
         context = models.display_on_wall(request)

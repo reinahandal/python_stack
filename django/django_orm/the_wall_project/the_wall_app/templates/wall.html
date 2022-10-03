@@ -17,6 +17,7 @@
             <a href="/logout">Log Off</a>
         </div>
     </header>
+    <!-- Post a message form -->
     <div class="container post-msg">
         <form action="post/" method="post">
             {% csrf_token %}
@@ -27,12 +28,14 @@
             </div>
         </form>
     </div>
+    <!-- this part renders every message posted on the wall -->
     <div class="container">
         {% for message in messages %}
         <div class="card border-dark mb-3">
             <div class="card-header">{{message.user.first_name}} {{message.user.last_name}} - {{ message.created_at }}</div>
             <div class="message-content">
                 <p class="card-body color-primary">{{message.message}}</p>
+                <!-- this part renders a delete button which allows users to delete their posts only -->
                 {% if request.session.logged_user == message.user.id %}
                 <form action="delete_message/" method="post">
                     {% csrf_token %}
@@ -41,12 +44,14 @@
                 </form>
                 {% endif %}
             </div>
+            <!-- This part renders every comment for each corresponding message -->
             {% for comment in message.comments.all %}
             <div class="comment card border-light mb-3">
                 <div class="card-header comment-header">{{comment.user.first_name}} {{comment.user.last_name}} - {{ comment.created_at }}</div>
                 <p class="text-secondary card-body">{{comment.comment}}</p>
             </div>
             {% endfor %}
+            <!-- This part renders a comment form for each message posted -->
             <div class="container">
                 <form action="comment/" method="post">
                     {% csrf_token %}

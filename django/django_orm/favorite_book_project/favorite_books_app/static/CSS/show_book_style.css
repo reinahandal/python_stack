@@ -19,9 +19,10 @@ main {
     margin-left: 20px;
 }
 .book-title-input {
-    width: 100%;
+    width: 80%;
     font-size: 1.5rem;
     font-weight: 500;
+    margin-bottom: 10px;
 }
 .btn {
     margin: 10px 0px;

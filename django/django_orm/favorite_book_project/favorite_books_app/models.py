@@ -39,3 +39,15 @@ def update_book(request, book_id):
 def delete_book(request, book_id):
     book_to_delete = Book.objects.get(id=book_id)
     book_to_delete.delete()
+
+
+def favorite_book(request, book_id):
+    book_to_favorite = Book.objects.get(id=book_id)
+    user_who_likes = User.objects.get(id=request.session['logged_user'])
+    book_to_favorite.users_who_like.add(user_who_likes)
+
+
+def unfavorite_book(request, book_id):
+    book_to_unfavorite = Book.objects.get(id=book_id)
+    user_who_dislikes = User.objects.get(id=request.session['logged_user'])
+    book_to_unfavorite.users_who_like.remove(user_who_dislikes)

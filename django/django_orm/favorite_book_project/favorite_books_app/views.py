@@ -6,6 +6,7 @@ from django.contrib import messages
 def books(request):
     if 'logged_user' in request.session:
         context = {
+        "logged_user": User.objects.get(id=request.session['logged_user']),
         "first_name": User.objects.get(id=request.session['logged_user']).first_name,
         "all_books": Book.objects.all(),
         }
@@ -25,12 +26,14 @@ def add_book(request):
 def show_book(request, book_id):
     if request.session['logged_user'] == Book.objects.get(id=book_id).uploaded_by.id:
         context = {
+        "logged_user": User.objects.get(id=request.session['logged_user']),
         "first_name": User.objects.get(id=request.session['logged_user']).first_name,
         "book": Book.objects.get(id=book_id),
         }
         return render(request, 'update_book.html', context)
     else:
         context = {
+        "logged_user": User.objects.get(id=request.session['logged_user']),
         "first_name": User.objects.get(id=request.session['logged_user']).first_name,
         "book": Book.objects.get(id=book_id),
         }
@@ -44,14 +47,20 @@ def update_book(request, book_id):
             messages.error(request, value)
         return redirect('/books/'+book_id)
     else:
-        book_id = book_id
         models.update_book(request, book_id)
         return redirect('/books/'+book_id)
 
 
 def delete_book(request, book_id):
-    book_id = book_id
     models.delete_book(request, book_id)
     return redirect('/books/')
 
 
+def favorite_book(request, book_id):
+    models.favorite_book(request, book_id)
+    return redirect('/books/'+book_id)
+
+
+def unfavorite_book(request,book_id):
+    models.unfavorite_book(request,book_id)
+    return redirect('/books/'+book_id)

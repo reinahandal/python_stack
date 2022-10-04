@@ -21,7 +21,7 @@
         <div class="container">
             <form action="update/" method="post" class="d-inline">
                 {% csrf_token %}
-                <input type="text" value="{{book.title}}" name="title" class="book-title-input">
+                <input type="text" value="{{book.title}}" name="title" class="book-title-input form-control">
                 <h5>Added by: {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</h4>
                 <h6>Added on: {{book.created_at}}</h5>
                 <h6>Last updated on: {{book.updated_at}}</h5>
@@ -50,6 +50,11 @@
                 <li>{{user.first_name}} {{user.last_name}}</li>
                 {% endfor %}
             </ul>
+            {% if logged_user not in book.users_who_like.all %}
+            <a href="/books/{{book.id}}/favorite/">Add to Favorites</a>
+            {% else %}
+            <a href="/books/{{book.id}}/unfavorite/">Remove from Favorites</a>
+            {% endif %}
         </div>
     </main>
 </body>

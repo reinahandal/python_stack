@@ -33,6 +33,15 @@
                 {% csrf_token %}
                 <input type="submit" value="Delete" class="btn btn-danger">
             </form>
+            {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
         </div>
         <div class="container users-who-like">
             <h3>Users who like this book:</h3>

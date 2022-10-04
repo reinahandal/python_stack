@@ -38,9 +38,15 @@ def show_book(request, book_id):
 
 
 def update_book(request, book_id):
-    book_id = book_id
-    models.update_book(request, book_id)
-    return redirect('/books/'+book_id)
+    errors = Book.objects.book_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/books/'+book_id)
+    else:
+        book_id = book_id
+        models.update_book(request, book_id)
+        return redirect('/books/'+book_id)
 
 
 def delete_book(request, book_id):

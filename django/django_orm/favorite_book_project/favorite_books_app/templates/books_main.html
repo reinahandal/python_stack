@@ -10,6 +10,45 @@
     <link rel="stylesheet" href="{% static 'CSS/books_main_style.css' %}">
 </head>
 <body>
-    
+    <header>
+        <h2>Welcome, {{first_name}}</h2>
+        <a href="/logout">Log Out</a>
+    </header>
+    <main>
+        <div class="container">
+            <form action="new/" method="post">
+                {% csrf_token %}
+                <h3 class="text-center">Add a Favorite Book</h3>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" id="title" name="title" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="desc"class="form-label">Description</label>
+                    <textarea id="desc" name="desc" class="form-control"></textarea>
+                </div>
+                <input type="submit" value="add" class="btn btn-dark">
+            </form>
+            {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                <ul class="messages">    
+                    {% for message in messages %}    
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        <div class="container">
+            <h3 class="text-center">All Books</h3>
+            {% for book in all_books %}
+            <div class="card mb-3 books">
+                <h5 class="card-title"><a href="#">{{book.title}}</a></h5>
+                <p class="card-subtitle text-secondary">Added by: {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</p>
+                <p class="card-text">{{book.desc}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
 </body>
 </html>

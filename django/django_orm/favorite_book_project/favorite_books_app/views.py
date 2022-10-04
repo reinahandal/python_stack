@@ -45,10 +45,10 @@ def update_book(request, book_id):
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect('/books/'+book_id)
+        return redirect('/books/'+str(book_id))
     else:
         models.update_book(request, book_id)
-        return redirect('/books/'+book_id)
+        return redirect('/books/'+str(book_id))
 
 
 def delete_book(request, book_id):
@@ -58,9 +58,18 @@ def delete_book(request, book_id):
 
 def favorite_book(request, book_id):
     models.favorite_book(request, book_id)
-    return redirect('/books/'+book_id)
+    return redirect('/books/'+str(book_id))
 
 
 def unfavorite_book(request,book_id):
     models.unfavorite_book(request,book_id)
-    return redirect('/books/'+book_id)
+    return redirect('/books/'+str(book_id))
+
+
+def my_favorites(request):
+    logged_user = User.objects.get(id=request.session['logged_user'])
+    context = {
+        "first_name": User.objects.get(id=request.session['logged_user']).first_name,
+        "my_favorites": logged_user.liked_books.all()
+    }
+    return render(request, 'my_favs.html', context)

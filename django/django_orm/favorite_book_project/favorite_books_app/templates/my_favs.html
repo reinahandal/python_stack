@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/show_book_style.css' %}">
+</head>
+<body>
+    <header>
+        <h2>Welcome, {{first_name}}</h2>
+        <div class="nav-bar">
+            <a href="/books">Home</a>
+            <a href="/books/my_favorites">My Favorites</a>
+            <a href="/logout">Log Out</a>
+        </div>
+    </header>
+    <div class="container favorites-list">
+        <h3>My Favorite Books:</h3>
+        <ul>
+            {% for fav in my_favorites %}
+            <li>{{fav.title}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import User
 from . import models
+from django.contrib import messages
 
 
 def index(request):

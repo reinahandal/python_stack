@@ -47,14 +47,17 @@
             <h3>Users who like this book:</h3>
             <ul>
                 {% for user in book.users_who_like.all %}
-                <li>{{user.first_name}} {{user.last_name}}</li>
+                <li class="user-li">
+                    <p class="d-inline">{{user.first_name}} {{user.last_name}}</p>
+                    {% if user.id == request.session.logged_user %}
+                    <a class="btn btn-primary btn-sm d-inline" href="/books/{{book.id}}/unfavorite/">Unfavorite</a>
+                    {% endif %}
+                </li>
                 {% endfor %}
             </ul>
-            {% if logged_user not in book.users_who_like.all %}
-            <a href="/books/{{book.id}}/favorite/">Add to Favorites</a>
-            {% else %}
-            <a href="/books/{{book.id}}/unfavorite/">Remove from Favorites</a>
-            {% endif %}
+                {% if not logged_user in book.users_who_like.all %}
+                <a class="btn btn-dark btn-sm" href="/books/{{book.id}}/favorite/">Favorite</a>
+                {% endif %}
         </div>
     </main>
 </body>

@@ -35,3 +35,17 @@ def show_book(request, book_id):
         "book": Book.objects.get(id=book_id),
         }
         return render(request, 'show_book.html', context)
+
+
+def update_book(request, book_id):
+    book_id = book_id
+    models.update_book(request, book_id)
+    return redirect('/books/'+book_id)
+
+
+def delete_book(request, book_id):
+    book_id = book_id
+    models.delete_book(request, book_id)
+    return redirect('/books/')
+
+

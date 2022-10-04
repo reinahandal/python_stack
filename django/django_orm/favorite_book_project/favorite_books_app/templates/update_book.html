@@ -19,11 +19,20 @@
     </header>
     <main>
         <div class="container">
-            <h3>{{book.title}}</h3>
-            <h5>Added by: {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</h4>
-            <h6>Added on: {{book.created_at}}</h5>
-            <h6>Last updated on: {{book.updated_at}}</h5>
-            <p>Description: {{book.desc}}</p>
+            <form action="update/" method="post" class="d-inline">
+                {% csrf_token %}
+                <input type="text" value="{{book.title}}" name="title" class="book-title-input">
+                <h5>Added by: {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</h4>
+                <h6>Added on: {{book.created_at}}</h5>
+                <h6>Last updated on: {{book.updated_at}}</h5>
+                <p>Description:</p>
+                <textarea name="desc" id="desc" cols="50" rows="10" class="form-control">{{book.desc}}</textarea>
+                <input type="submit" value="Update" class="btn btn-dark">
+            </form>
+            <form action="delete/" method="post" class="d-inline">
+                {% csrf_token %}
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
         </div>
         <div class="container users-who-like">
             <h3>Users who like this book:</h3>

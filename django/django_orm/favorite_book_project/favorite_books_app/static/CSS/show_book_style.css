@@ -18,3 +18,11 @@ main {
     width: 40%;
     margin-left: 20px;
 }
+.book-title-input {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.btn {
+    margin-top: 10px;
+}

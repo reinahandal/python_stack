@@ -28,3 +28,14 @@ def add_book(request):
     added_book = Book.objects.create(title=title, desc=desc,uploaded_by=uploaded_by)
     added_book.users_who_like.add(uploaded_by)
 
+
+def update_book(request, book_id):
+    book_to_update = Book.objects.get(id=book_id)
+    book_to_update.title = request.POST['title']
+    book_to_update.desc = request.POST['desc']
+    book_to_update.save()
+
+
+def delete_book(request, book_id):
+    book_to_delete = Book.objects.get(id=book_id)
+    book_to_delete.delete()

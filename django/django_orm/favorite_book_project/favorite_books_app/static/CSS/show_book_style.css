@@ -1,0 +1,20 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 2px black solid;
+}
+.nav-bar {
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+}
+main {
+    display: flex;
+    padding: 15px;
+}
+.users-who-like {
+    width: 40%;
+    margin-left: 20px;
+}

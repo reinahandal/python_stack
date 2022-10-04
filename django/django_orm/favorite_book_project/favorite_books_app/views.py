@@ -20,3 +20,18 @@ def add_book(request):
     else:
         models.add_book(request)
         return redirect('/books')
+
+
+def show_book(request, book_id):
+    if request.session['logged_user'] == Book.objects.get(id=book_id).uploaded_by.id:
+        context = {
+        "first_name": User.objects.get(id=request.session['logged_user']).first_name,
+        "book": Book.objects.get(id=book_id),
+        }
+        return render(request, 'update_book.html', context)
+    else:
+        context = {
+        "first_name": User.objects.get(id=request.session['logged_user']).first_name,
+        "book": Book.objects.get(id=book_id),
+        }
+        return render(request, 'show_book.html', context)

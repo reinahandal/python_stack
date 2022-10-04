@@ -43,7 +43,7 @@
             <h3 class="text-center">All Books</h3>
             {% for book in all_books %}
             <div class="card mb-3 books">
-                <h5 class="card-title"><a href="#">{{book.title}}</a></h5>
+                <h5 class="card-title"><a href="{{book.id}}/">{{book.title}}</a></h5>
                 <p class="card-subtitle text-secondary">Added by: {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</p>
                 <p class="card-text">{{book.desc}}</p>
             </div>

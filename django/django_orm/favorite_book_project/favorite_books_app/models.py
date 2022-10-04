@@ -21,10 +21,10 @@ class Book(models.Model):
     objects = BookManager()
 
 
-
 def add_book(request):
     title = request.POST['title']
     desc = request.POST['desc']
     uploaded_by = User.objects.get(id=request.session['logged_user'])
     added_book = Book.objects.create(title=title, desc=desc,uploaded_by=uploaded_by)
     added_book.users_who_like.add(uploaded_by)
+
